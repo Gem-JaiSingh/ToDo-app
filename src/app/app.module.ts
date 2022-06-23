@@ -6,6 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MainWindowComponent } from './main-window/main-window.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -17,7 +18,7 @@ import { MainWindowComponent } from './main-window/main-window.component';
     FormsModule
     
   ],
-  providers: [],
+  
   bootstrap: [AppComponent]
 })
 export class AppModule { }

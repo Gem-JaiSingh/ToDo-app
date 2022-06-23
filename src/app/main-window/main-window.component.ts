@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Task } from '../Model/task';
 
+
 @Component({
   selector: 'app-main-window',
   templateUrl: './main-window.component.html',
@@ -9,7 +10,9 @@ import { Task } from '../Model/task';
 export class MainWindowComponent implements OnInit {
   todos: Task[] = [];
 
-  constructor() {}
+  constructor(
+ 
+  ) {}
 
   addTaskValue: string = '';
 
@@ -19,6 +22,7 @@ export class MainWindowComponent implements OnInit {
     this.todos.push({
       taskname: this.addTaskValue,
     });
+
 
     this.addTaskValue = '';
   }
