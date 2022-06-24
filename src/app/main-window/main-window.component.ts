@@ -2,6 +2,7 @@ import { Component, OnInit,ViewChild } from '@angular/core';
 import { TaskServiceService } from '../task-service.service';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import { NgForm } from '@angular/forms';
+declare var window: any;
 
 
 @Component({
@@ -10,7 +11,7 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./main-window.component.css'],
 })
 export class MainWindowComponent implements OnInit {
-  closeResult: any;
+  
   
 
   constructor(
@@ -22,7 +23,11 @@ export class MainWindowComponent implements OnInit {
 
   addTaskValue: string = '';
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    
+  }
+
+
   @ViewChild('TaskForm') TaskForm!: NgForm;
 
   onSubmit() {
