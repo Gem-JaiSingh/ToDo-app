@@ -28,7 +28,7 @@
       <h4 class="text-primary mt-4">Tasks :</h4>
 
       <div class="remind">
-        <div class="m-3" *ngFor="let task of todos; let i = index">
+        <div class="m-3" *ngFor="let task of taskservice.todos; let i = index">
           <div class="p-2 shadow border" id="tasks">
             <div class="input-group row ps-3">
               <div class="card col-md-10 border-0">{{ task.taskname }}</div>

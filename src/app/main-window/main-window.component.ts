@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Task } from '../Model/task';
+// import { Task } from '../Model/task';
+import { TaskServiceService } from '../task-service.service';
 
 
 @Component({
@@ -8,10 +9,11 @@ import { Task } from '../Model/task';
   styleUrls: ['./main-window.component.css'],
 })
 export class MainWindowComponent implements OnInit {
-  todos: Task[] = [];
+  // todos: Task[] = [];
+  
 
   constructor(
- 
+    public taskservice : TaskServiceService
   ) {}
 
   addTaskValue: string = '';
@@ -19,23 +21,25 @@ export class MainWindowComponent implements OnInit {
   ngOnInit(): void {}
 
   addTask() {
-    this.todos.push({
+    this.taskservice.todos.push({
       taskname: this.addTaskValue,
+      
     });
+    
 
 
     this.addTaskValue = '';
   }
 
   deleteTask(i: number) {
-    this.todos.splice(i, 1);
+    this.taskservice.todos.splice(i, 1);
   }
 
   editTask(i: number) {
-    let title = this.todos[i].taskname;
+    let title = this.taskservice.todos[i].taskname;
     let result = prompt('Edit Task Title', title);
     if (result !== null && result !== '') {
-      this.todos[i].taskname = result;
+      this.taskservice.todos[i].taskname = result;
     }
   }
 }
