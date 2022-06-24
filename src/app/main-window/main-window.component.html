@@ -1,11 +1,11 @@
 <div class="container bg-light">
-  <div class="row mt-4" style="height: 500px">
+  <div class="row mt-4" >
     <div class="col"></div>
     <div class="col-md-6 bg-white shadow">
       <div class="card bg-warning mt-4">
         <h4 class="text-white p-3 pt-2 pb-2">To Do App</h4>
       </div>
-
+      <form action="" #TaskForm="ngForm" (ngSubmit)="onSubmit()">
       <div class="shadow">
         <div class="input-group p-4">
           <input
@@ -13,17 +13,19 @@
             class="form-control"
             placeholder="Enter task "
             name="task"
-            [(ngModel)]="addTaskValue"
+            ngModel
+            #task="ngModel"
           />
           <button
             class="btn btn-outline-success"
-            type="button"
-            (click)="addTask()"
+            type="submit"
+            
           >
             <i class="fa-solid fa-plus"></i>
           </button>
         </div>
       </div>
+    </form>
 
       <h4 class="text-primary mt-4">Tasks :</h4>
 
@@ -41,6 +43,7 @@
               >
                 <i class="fa-solid fa-pen-to-square"></i>
               </button>
+              <!-- <button class="btn btn-lg btn-outline-primary" (click)="open(mymodal,i)"><i class="fa-solid fa-pen-to-square"></i></button> -->
               <button
                 class="btn btn-outline-danger col"
                 (click)="deleteTask(i)"
@@ -61,4 +64,27 @@
 
 <!-- DEMO ........................................................................................................ -->
 
+<!-- <h1>Angular 8 Bootstrap Modal Popup Example</h1>
+   
 
+   
+<ng-template #mymodal let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Bootstrap Modal</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">×</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <input
+            type="text"
+            class="form-control"
+            placeholder="Enter task "
+            name="task1"
+            
+          />
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Ok</button>
+  </div>
+</ng-template> -->
