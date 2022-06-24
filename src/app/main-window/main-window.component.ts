@@ -51,10 +51,10 @@ export class MainWindowComponent implements OnInit {
       taskname: this.TaskForm?.value.task
       
     });
-    
+    this.TaskForm.reset()
 
 
-    this.addTaskValue = '';
+  
   }
 
   deleteTask(i: number) {
