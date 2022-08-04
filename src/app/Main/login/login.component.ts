@@ -39,14 +39,33 @@ export class LoginComponent implements OnInit {
   }
 
   login(){
-    console.log("jai",this.loginForm);
-    this.loginForm.markAllAsTouched()
-    if(this.loginForm.status=='VALID'){
-      console.log(this.loginForm.status);
-      alert("Login Successfully");
-      this.loginForm.reset();
-      this.router.navigate(['todo']);
+    let logindata = {
+      email: this.loginForm?.value.loginemail,
+      pwd: this.loginForm?.value.loginpassword,
+    };
+    let data = JSON.parse(localStorage.getItem('users') || '[]');
+    if (data) {
+      for (let i = 0; i < data.length; i++) {
+        if (
+          logindata.email == data[i].Email &&
+          logindata.pwd == data[i].password
+        ) {
+          alert('Login Successfully');
+          this.loginForm.reset();
+          break;
+        } else {
+          alert('Please SignUp');
+        }
+      }
     }
+    // console.log("jai",this.loginForm);
+    // this.loginForm.markAllAsTouched()
+    // if(this.loginForm.status=='VALID'){
+    //   console.log(this.loginForm.status);
+    //   alert("Login Successfully");
+    //   this.loginForm.reset();
+    //   this.router.navigate(['todo']);
+    // }
   }
 
 }
