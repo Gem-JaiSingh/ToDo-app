@@ -23,3 +23,17 @@ a{
     margin-top: 10px;
     text-decoration: none;
 }
+
+.error-msg {
+    color: red;
+    font-size: 14px;
+    margin: 6px 0 0 0;
+    word-break: break-word;
+    font-family: pop-reg;
+}
+
+
+    label::after {
+        color: red;
+        content: " *";
+    }

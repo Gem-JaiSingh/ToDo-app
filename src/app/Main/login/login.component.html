@@ -1,26 +1,74 @@
 <div class="container">
-    <div class="row">
-        <div class="col-md-6">
-            <div class="card">
-                <div class="text-center">
-                    <h1>Login</h1>
-                    <h6>Please Enter Email and Password !!</h6>
-                </div>
-                <form>
-                    <div class="form-group mb-3">
-                      <label for="exampleInputEmail1">Email address</label>
-                      <input type="email" class="form-control mt-3" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-                      
-                    </div>
-                    <div class="form-group mb-3">
-                      <label for="exampleInputPassword1">Password</label>
-                      <input type="password" class="form-control mt-3" id="exampleInputPassword1" placeholder="Password">
-                    </div>
-                  
-                    <button type="submit" class="btn btn-primary">Login</button>
-                  </form>
-                  <a routerLink="/signup">New user ? Click to SignUp</a>
-            </div>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="text-center">
+          <h1>Login</h1>
+          <h6>Please Enter Email and Password !!</h6>
         </div>
+        <form [formGroup]="loginForm">
+          <div class="form-group mb-3">
+            <label for="loginemail">Email address</label>
+            <input
+              type="email"
+              class="form-control mt-3"
+              id="loginemail"
+              aria-describedby="emailHelp"
+              placeholder="Enter email address"
+              formControlName="loginemail"
+            />
+            <div
+            *ngIf="
+              loginForm.controls['loginemail'].invalid &&
+              (loginForm.controls['loginemail'].dirty ||
+                loginForm.controls['loginemail'].touched)
+            "
+            class="error-msg"
+          >
+            <div
+              *ngIf="loginForm.controls['loginemail'].errors?.['required']"
+            >
+              Email address is requird
+            </div>
+            <div
+              *ngIf="loginForm.controls['loginemail'].errors?.['pattern']"
+            >
+              Email address is invalid
+            </div>
+          </div>
+          </div>
+          <div class="form-group mb-3">
+            <label for="loginpassword">Password</label>
+            <input
+              type="password"
+              class="form-control mt-3"
+              id="loginpassword"
+              placeholder="Password"
+              formControlName="loginpassword"
+            />
+            <div
+            *ngIf="
+              loginForm.controls['loginpassword'].invalid &&
+              (loginForm.controls['loginpassword'].dirty ||
+                loginForm.controls['loginpassword'].touched)
+            "
+            class="error-msg"
+          >
+            <div *ngIf="loginForm.controls['loginpassword'].errors?.['required']">
+              Email address is requird
+            </div>
+            <div
+              *ngIf="loginForm.controls['loginpassword'].errors?.['minlength']"
+            >
+              Password must be minimun 8 characters and maximum 20 characters
+            </div>
+          </div>
+          </div>
+
+          <button type="submit" class="btn btn-primary">Login</button>
+        </form>
+        <a routerLink="/signup">New user ? Click to SignUp</a>
+      </div>
     </div>
+  </div>
 </div>
