@@ -4,6 +4,7 @@ import { FormGroup } from '@angular/forms';
 import { FormControl } from '@angular/forms';
 import { Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { User } from 'src/app/User';
 
 @Component({
   selector: 'app-signup',
@@ -15,6 +16,7 @@ export class SignupComponent implements OnInit {
   public signupForm !: FormGroup
 
   constructor(private route : Router) { }
+  user:User = new User('',0,null,null);
 
   ngOnInit(): void {
     this.signupForm = new FormGroup({
@@ -54,10 +56,20 @@ export class SignupComponent implements OnInit {
   }
 
   signup(){
-    console.log("jai",this.signupForm);
+    let Userdata = {
+      "name": this.signupForm?.value.fullName,
+      "mobile": this.signupForm?.value.mobileNumber,
+      "Email": this.signupForm?.value.emailAddress,
+      "password": this.signupForm?.value.password,
+    }
+    let data = JSON.parse(localStorage.getItem('users') || '[]');
+    console.log(data);
+    data = [...data, Userdata];
+    localStorage.setItem('users', JSON.stringify(data));
+    console.log(data);
     this.signupForm.markAllAsTouched()
     if(this.signupForm.status=='VALID'){
-      console.log(this.signupForm.status);
+      // console.log(this.signupForm.status);
       alert("SignUp Successfully");
       this.signupForm.reset();
       this.route.navigate(['login']);
