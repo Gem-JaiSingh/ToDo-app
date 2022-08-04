@@ -3,6 +3,7 @@ import { FormBuilder } from '@angular/forms';
 import { FormGroup } from '@angular/forms';
 import { FormControl } from '@angular/forms';
 import { Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
@@ -13,7 +14,7 @@ export class SignupComponent implements OnInit {
 
   public signupForm !: FormGroup
 
-  constructor() { }
+  constructor(private route : Router) { }
 
   ngOnInit(): void {
     this.signupForm = new FormGroup({
@@ -36,7 +37,7 @@ export class SignupComponent implements OnInit {
           "",
           [
             Validators.required,
-            Validators.maxLength(10),
+            Validators.maxLength(60),
             Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$"),
           ]),
           password: new FormControl (
@@ -53,6 +54,15 @@ export class SignupComponent implements OnInit {
   }
 
   signup(){
+    console.log("jai",this.signupForm);
+    this.signupForm.markAllAsTouched()
+    if(this.signupForm.status=='VALID'){
+      console.log(this.signupForm.status);
+      alert("SignUp Successfully");
+      this.signupForm.reset();
+      this.route.navigate(['login']);
+    }
+   
     
   }
   isNumberKey(evt: any) {
