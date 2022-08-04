@@ -51,11 +51,11 @@
               class="error-msg"
             >
               <div
-                *ngIf="signupForm.controls['mobileNumber'].errors?.['required']"
+                *ngIf="signupForm.controls['mobileNumber'].errors?.['required']  "
               >
                 Mobile number is requird
               </div>
-              <div *ngIf="signupForm.controls['mobileNumber'].dirty">
+              <div *ngIf="signupForm.controls['mobileNumber'].dirty && signupForm.controls['mobileNumber'].value != '' ">
                 Mobile number must start with 6,7,8,9
               </div>
             </div>
@@ -109,7 +109,7 @@
               "
               class="error-msg"
             >
-              <div *ngIf="signupForm.controls['password'].errors?.['required']">
+              <div *ngIf="signupForm.controls['password'].errors?.['required']" >
                 Email address is requird
               </div>
               <div
