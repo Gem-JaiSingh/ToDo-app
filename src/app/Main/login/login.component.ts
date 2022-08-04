@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
   public loginForm !: FormGroup
 
-  constructor() { }
+  constructor(private router : Router) { }
 
   ngOnInit(): void {
     this.loginForm = new FormGroup({
@@ -36,6 +36,17 @@ export class LoginComponent implements OnInit {
       
       
     });
+  }
+
+  login(){
+    console.log("jai",this.loginForm);
+    this.loginForm.markAllAsTouched()
+    if(this.loginForm.status=='VALID'){
+      console.log(this.loginForm.status);
+      alert("Login Successfully");
+      this.loginForm.reset();
+      this.router.navigate(['todo']);
+    }
   }
 
 }
