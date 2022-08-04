@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
+import { ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { MainWindowComponent } from './main-window/main-window.component';
 import { TaskServiceService } from './task-service.service';
@@ -26,7 +27,8 @@ import { SignupComponent } from './Main/signup/signup.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,  
-    NgbModule
+    NgbModule,
+    ReactiveFormsModule
   ],
   providers:[TaskServiceService],
   

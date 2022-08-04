@@ -1,35 +1,129 @@
 <div class="container">
-    <div class="row">
-        <div class="col-md-6">
-            <div class="card">
-                <div class="text-center">
-                    <h1>SignUp</h1>
-                    <h6>Register Yourself !!</h6>
-                </div>
-                <form>
-                    <div class="form-group mb-3">
-                        <label for="exampleInputEmail1">Full Name</label>
-                        <input type="text" class="form-control mt-3" id="exampleInputname" aria-describedby="namehelp" placeholder="Enter your full name">
-                        
-                      </div>
-                      <div class="form-group mb-3">
-                        <label for="exampleInputEmail1">Mobile Number</label>
-                        <input type="text" class="form-control mt-3" id="exampleInputnumber" aria-describedby="mobileHelp" placeholder="Enter mobile nuber">
-                        
-                      </div>
-                    <div class="form-group mb-3">
-                      <label for="exampleInputEmail1">Email address</label>
-                      <input type="email" class="form-control mt-3" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-                      
-                    </div>
-                    <div class="form-group mb-3">
-                      <label for="exampleInputPassword1">Password</label>
-                      <input type="password" class="form-control mt-3" id="exampleInputPassword1" placeholder="Password">
-                    </div>
-                  
-                    <button type="submit" class="btn btn-primary">SignUp</button>
-                  </form>
-            </div>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="text-center">
+          <h1>SignUp</h1>
+          <h6>Register Yourself !!</h6>
         </div>
+        <form [formGroup]="signupForm">
+          <div class="form-group mb-3">
+            <label for="fullName">Full Name</label>
+            <input
+              type="text"
+              class="form-control mt-3"
+              id="fullName"
+              aria-describedby="namehelp"
+              placeholder="Enter your full name"
+              formControlName="fullName"
+            />
+            <div
+              *ngIf="
+                signupForm.controls['fullName'].invalid &&
+                (signupForm.controls['fullName'].dirty ||
+                  signupForm.controls['fullName'].touched)
+              "
+              class="error-msg"
+            >
+              <div *ngIf="signupForm.controls['fullName'].errors?.['required']">
+                Fullname is requird
+              </div>
+            </div>
+          </div>
+          <div class="form-group mb-3">
+            <label for="mobileNumber">Mobile Number</label>
+            <input
+              type="text"
+              class="form-control mt-3"
+              (keypress)="isNumberKey($event)"
+              id="mobileNumber"
+              aria-describedby="mobileHelp"
+              placeholder="Enter mobile number"
+              formControlName="mobileNumber"
+              maxlength="10"
+            />
+            <div
+              *ngIf="
+                signupForm.controls['mobileNumber'].invalid &&
+                (signupForm.controls['mobileNumber'].dirty ||
+                  signupForm.controls['mobileNumber'].touched)
+              "
+              class="error-msg"
+            >
+              <div
+                *ngIf="signupForm.controls['mobileNumber'].errors?.['required']"
+              >
+                Mobile number is requird
+              </div>
+              <div *ngIf="signupForm.controls['mobileNumber'].dirty">
+                Mobile number must start with 6,7,8,9
+              </div>
+            </div>
+          </div>
+          <div class="form-group mb-3">
+            <label for="emailAddress">Email address</label>
+            <input
+              type="email"
+              class="form-control mt-3"
+              id="emailAddress"
+              aria-describedby="emailHelp"
+              placeholder="Enter email"
+              formControlName="emailAddress"
+            />
+            <div
+              *ngIf="
+                signupForm.controls['emailAddress'].invalid &&
+                (signupForm.controls['emailAddress'].dirty ||
+                  signupForm.controls['emailAddress'].touched)
+              "
+              class="error-msg"
+            >
+              <div
+                *ngIf="signupForm.controls['emailAddress'].errors?.['required']"
+              >
+                Email address is requird
+              </div>
+              <div
+                *ngIf="signupForm.controls['emailAddress'].errors?.['pattern']"
+              >
+                Email address is invalid
+              </div>
+            </div>
+          </div>
+          <div class="form-group mb-3">
+            <label for="password">Password</label>
+            <input
+              type="password"
+              class="form-control mt-3"
+              minlength="8"
+              maxlength="20"
+              id="password"
+              placeholder="Password"
+              formControlName="password"
+            />
+            <div
+              *ngIf="
+                signupForm.controls['password'].invalid &&
+                (signupForm.controls['password'].dirty ||
+                  signupForm.controls['password'].touched)
+              "
+              class="error-msg"
+            >
+              <div *ngIf="signupForm.controls['password'].errors?.['required']">
+                Email address is requird
+              </div>
+              <div
+                *ngIf="signupForm.controls['password'].errors?.['minlength']"
+              >
+                Password must be minimun 8 characters and maximum 20 characters
+              </div>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-primary">SignUp</button>
+        </form>
+        <a routerLink="/login" href="">Already registered ? Click to login</a>
+      </div>
     </div>
+  </div>
 </div>
