@@ -9,6 +9,8 @@ import { TaskServiceService } from './task-service.service';
 // import { NgbModal, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { LoginComponent } from './Main/login/login.component';
+import { SignupComponent } from './Main/signup/signup.component';
 
 
 
@@ -16,6 +18,8 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
   declarations: [
     AppComponent,
     MainWindowComponent,
+    LoginComponent,
+    SignupComponent,
    
   ],
   imports: [
